@@ -12,20 +12,31 @@ namespace TaskExample
     {
         static void Main(string[] args)
         {
-            Task task1 = new Task(TestTask);
-            task1.Start();
+            //Task task1 = new Task(TestTask);
+            //task1.Start();
             
-            Task task2 = Task.Factory.StartNew(TestTask);
+            //Task task2 = Task.Factory.StartNew(TestTask);
 
-            Task task3 = Task.Run(() =>
-            {
-                TestTask();
-            });
+            //Task task3 = Task.Run(() =>
+            //{
+            //    TestTask();
+            //});
 
             //Task.WaitAll(new Task[] {task1, task2, task3});
-            Task.WaitAny(new Task[] {task1, task2, task3});
+            //Task.WaitAny(new Task[] {task1, task2, task3});
 
-            Console.WriteLine($"Trwa wykonywanie zadania #1");
+            Task<int> task4 = Task.Run(() => Add(10, 20));
+            Task.WaitAll(new Task[] { task4 });
+            task4.ContinueWith(t1 =>
+            {
+                var task5 = Task.Run(() => Avarage(task4.Result, 2));
+                task5.ContinueWith(t2 =>
+                {
+                    Console.WriteLine($"Average: {t2.Result}");
+                });
+            });
+
+            //Console.WriteLine($"Trwa wykonywanie zadania #1");
             Console.ReadKey();
         }
 
@@ -37,6 +48,19 @@ namespace TaskExample
                 Thread.Sleep(500);
             }
         }
-    }
 
+        static int Add(int a, int b)
+        {
+            Console.WriteLine($"Liczenie sumy dla {a} oraz {b}");
+            Thread.Sleep(500);
+            return a + b;
+        }
+
+        static int Avarage(int sum, int n)
+        {
+            Console.WriteLine($"Liczenie średniej dla sumy {sum} oraz {n} liczb");
+            Thread.Sleep(1000);
+            return sum / n;
+        }
+    }
 }
