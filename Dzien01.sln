@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadSafeProblem", "Thread
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPoolTest", "ThreadPoolTest\ThreadPoolTest.csproj", "{B5C585AC-3B22-4C18-BF2C-7DBC32C311BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PararellTest", "PararellTest\PararellTest.csproj", "{A4ACE645-304E-463E-8B58-03AD3F7E4715}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskExample", "TaskExample\TaskExample.csproj", "{42060D51-2246-4CDB-AB8F-2D32A8845052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{B5C585AC-3B22-4C18-BF2C-7DBC32C311BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5C585AC-3B22-4C18-BF2C-7DBC32C311BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5C585AC-3B22-4C18-BF2C-7DBC32C311BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4ACE645-304E-463E-8B58-03AD3F7E4715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4ACE645-304E-463E-8B58-03AD3F7E4715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4ACE645-304E-463E-8B58-03AD3F7E4715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4ACE645-304E-463E-8B58-03AD3F7E4715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42060D51-2246-4CDB-AB8F-2D32A8845052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42060D51-2246-4CDB-AB8F-2D32A8845052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42060D51-2246-4CDB-AB8F-2D32A8845052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42060D51-2246-4CDB-AB8F-2D32A8845052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
