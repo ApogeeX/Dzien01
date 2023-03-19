@@ -36,7 +36,6 @@ namespace TaskExample
             //    });
             //});
 
-            // Anulowanie zadania
             CancellationTokenSource cts = new CancellationTokenSource();
             CancellationToken token = cts.Token;
             cts.CancelAfter(1_000);
