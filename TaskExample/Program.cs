@@ -25,18 +25,41 @@ namespace TaskExample
             //Task.WaitAll(new Task[] {task1, task2, task3});
             //Task.WaitAny(new Task[] {task1, task2, task3});
 
-            Task<int> task4 = Task.Run(() => Add(10, 20));
-            Task.WaitAll(new Task[] { task4 });
-            task4.ContinueWith(t1 =>
-            {
-                var task5 = Task.Run(() => Avarage(task4.Result, 2));
-                task5.ContinueWith(t2 =>
-                {
-                    Console.WriteLine($"Average: {t2.Result}");
-                });
-            });
+            //Task<int> task4 = Task.Run(() => Add(10, 20));
+            //Task.WaitAll(new Task[] { task4 });
+            //task4.ContinueWith(t1 =>
+            //{
+            //    var task5 = Task.Run(() => Avarage(task4.Result, 2));
+            //    task5.ContinueWith(t2 =>
+            //    {
+            //        Console.WriteLine($"Average: {t2.Result}");
+            //    });
+            //});
 
-            //Console.WriteLine($"Trwa wykonywanie zadania #1");
+            // Anulowanie zadania
+            CancellationTokenSource cts = new CancellationTokenSource();
+            CancellationToken token = cts.Token;
+            cts.CancelAfter(1_000);
+            Task taskCancel = Task.Run(() =>
+            {
+                try
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Thread.Sleep(250);
+                        Console.WriteLine($"Task iteracja nr {i}");
+                        if (token.IsCancellationRequested)
+                        {
+                            token.ThrowIfCancellationRequested();
+                        }
+                    }
+                } catch ( OperationCanceledException exc)
+                {
+                    return;
+                }
+            }, token);
+
+            
             Console.ReadKey();
         }
 
